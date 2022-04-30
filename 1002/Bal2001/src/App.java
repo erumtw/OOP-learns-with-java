@@ -101,7 +101,8 @@ public class App extends Application {
         tfMonthlyPaymant.setText(String.format("$%.2f", loan.getMonthlyPayment()));
         tfTotalPayment.setText(String.format("$%.2f", loan.getTotalPayment()));
     }
-
+    
+    //clear all 
     private void clear(){
         tfAnnulInterestRate.clear();
         tfLoanAmount.clear();
@@ -110,6 +111,7 @@ public class App extends Application {
         tfTotalPayment.clear();
     }
 
+    //save data to binary
     private void save() {
 
         calculate();
@@ -123,6 +125,7 @@ public class App extends Application {
         }
     }
 
+    //load data from binary
     private void load() {
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(file))) {
             this.loan = (Loan)input.readObject();
@@ -137,6 +140,7 @@ public class App extends Application {
         }
     }
 
+    
     public void warnUser(String message) {
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle("Warning");
